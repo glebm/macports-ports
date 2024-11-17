@@ -233,6 +233,12 @@ if {${subport} eq "libgcc7"} {
         depends_lib-delete   port:zlib
         depends_build-append {*}${depends_lib}
         depends_lib          port:zlib
+    } elseif { ${os.major} < 10 } {
+        # Skip all the way to gcc14, because gcc versions 8 and 13
+        # are not currently supported on 10.4 and 10.5.
+        depends_run port:libgcc14
+        depends_build-append {*}${depends_lib}
+        depends_lib
     } else {
         depends_run port:libgcc8
         depends_build-append {*}${depends_lib}
