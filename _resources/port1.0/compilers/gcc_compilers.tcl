@@ -8,9 +8,10 @@ if {${os.major} >= 10 || [option os.platform] ne "darwin"} {
     lappend compilers macports-gcc-14 macports-gcc-13 macports-gcc-12 macports-gcc-11 macports-gcc-10
 }
 
-# GCC 9 and older only on OSX10.10 and older
+# GCC 14, GCC 9 and older only on OSX10.10 and older
 # https://trac.macports.org/ticket/65472
 if {${os.major} < 15} {
+    lappend compilers macports-gcc-14
     if {${os.major} >= 10} {
         lappend compilers macports-gcc-9 macports-gcc-8
     }
