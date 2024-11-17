@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup select    1.0
 
-epoch               3
+epoch               4
 name                libgcc
 version             9.0
 revision            0
