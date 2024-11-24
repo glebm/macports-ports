@@ -6,6 +6,8 @@ PortGroup           compiler_blacklist_versions  1.0
 PortGroup           active_variants              1.1
 PortGroup           conflicts_build              1.0
 
+PortGroup           legacysupport 1.1
+
 set                 gcc_major_v 14
 epoch               0
 name                gcc${gcc_major_v}
@@ -67,6 +69,9 @@ depends_lib-append  port:cctools \
                     port:zstd
 depends_run-append  port:gcc_select \
                     path:share/doc/libgcc/README:libgcc
+
+# PTHREAD_RWLOCK_INITIALIZER
+legacysupport.newest_darwin_requires_legacy 8
 
 platform darwin {
     if {(${configure.build_arch} in [list ppc ppc64]) || ${os.major} < 10} {
